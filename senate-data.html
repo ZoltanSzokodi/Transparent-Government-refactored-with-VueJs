@@ -144,62 +144,61 @@
           </div>
         </div>
 
-      </div>
+        <div class="members-tbl col-md-12">
+          <div class="table-responsive">
+            <h2>Party Affiliation</h2>
 
-      <div class="members-tbl col-md-12">
-        <div class="table-responsive">
-          <h2>Party Affiliation</h2>
+            <div class="table-filters">
+              <span style="font-weight: bold;">Party:</span>
+              <input v-on:click="filter" type="checkbox" name="Republicans" id="republicans" value="R" class="checkbox"
+                checked>
+              Republicans
+              <input v-on:click="filter" type="checkbox" name="Democrats" id="democrats" value="D" class="checkbox"
+                checked> Democrats
+              <input v-on:click="filter" type="checkbox" name="Independent" value="I" id="independent" class="checkbox"
+                checked> Independent
 
-          <div class="table-filters">
-            <span style="font-weight: bold;">Party:</span>
-            <input v-on:click="filter" type="checkbox" name="Republicans" id="republicans" value="R" class="checkbox"
-              checked>
-            Republicans
-            <input v-on:click="filter" type="checkbox" name="Democrats" id="democrats" value="D" class="checkbox"
-              checked> Democrats
-            <input v-on:click="filter" type="checkbox" name="Independent" value="I" id="independent" class="checkbox"
-              checked> Independent
+              <span style="font-weight: bold;"> | State:</span>
+              <select v-on:change="filter" id="state-select">
+                <option value="All">All</option>
+                <option v-for="state in states" :value='state'>{{state}}</option>
+              </select>
+            </div>
 
-            <span style="font-weight: bold;"> | State:</span>
-            <select v-on:change="filter" id="state-select">
-              <option value="All">All</option>
-              <option v-for="state in states" :value='state'>{{state}}</option>
-            </select>
+            <br>
+            <div class="table-length"></div>
+            <table id="house-table" class="table table-striped">
+              <caption>List of Representatives | <a href="#">Go to top</a></caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th>Full Name</th>
+                  <th>Party Affiliation</th>
+                  <th>State</th>
+                  <th>Years in Office</th>
+                  <th>Percentage of votes</th>
+                </tr>
+              </thead>
+              <tbody class="members-table_tbody">
+                <tr v-for="member in members">
+                  <td><a v-bind:href=member.url target="_blank">
+                      {{member.first_name}}
+                      <span v-if="member.middle_name">
+                        {{member.middle_name}}
+                      </span>
+                      {{member.last_name}}</a></td>
+                  <td>{{member.party}}</td>
+                  <td>{{member.state}}</td>
+                  <td>{{member.seniority}}</td>
+                  <td>{{member.votes_with_party_pct}} %</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-
-          <br>
-          <div class="table-length"></div>
-          <table id="house-table" class="table table-striped">
-            <caption>List of Representatives | <a href="#">Go to top</a></caption>
-            <thead class="thead-dark">
-              <tr>
-                <th>Full Name</th>
-                <th>Party Affiliation</th>
-                <th>State</th>
-                <th>Years in Office</th>
-                <th>Percentage of votes</th>
-              </tr>
-            </thead>
-            <tbody class="members-table_tbody">
-              <tr v-for="member in members">
-                <td><a v-bind:href=member.url target="_blank">
-                    {{member.first_name}}
-                    <span v-if="member.middle_name">
-                      {{member.middle_name}}
-                    </span>
-                    {{member.last_name}}</a></td>
-                <td>{{member.party}}</td>
-                <td>{{member.state}}</td>
-                <td>{{member.seniority}}</td>
-                <td>{{member.votes_with_party_pct}} %</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

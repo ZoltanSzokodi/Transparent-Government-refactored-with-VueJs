@@ -1,4 +1,11 @@
-const main = new Vue({
+const senateDataPage = document.location.pathname === "/senate-data.html";
+const houseDataPage = document.location.pathname === "/house-data.html";
+const senateAttendancePage = document.location.pathname === "/senate-attendance.html";
+const houseAttendancePage = document.location.pathname === "/house-attendance.html";
+const senateLoyaltyPage = document.location.pathname === "/senate-loyalty.html";
+const houseLoyaltyPage = document.location.pathname === "/house-loyalty.html";
+
+let main = new Vue({
   el: "#main",
   data: {
     display: true,
@@ -11,9 +18,9 @@ const main = new Vue({
   },
   methods: {
     toggleUrl() {
-      if (document.location.pathname === "/house-data.html") {
+      if (houseDataPage || houseAttendancePage || houseLoyaltyPage) {
         return "https://api.propublica.org/congress/v1/116/house/members.json";
-      } else if (document.location.pathname === "/senate-data.html") {
+      } else if (senateDataPage || senateAttendancePage || senateLoyaltyPage) {
         return "https://api.propublica.org/congress/v1/116/senate/members.json";
       }
     },
@@ -27,8 +34,7 @@ const main = new Vue({
         this.filteredMembers = this.members;
         this.display = false;
         this.filterStates();
-
-        console.log(this.filteredMembers);
+        console.log(this.members);
       } catch (err) {
         console.log(err);
       }
@@ -41,20 +47,19 @@ const main = new Vue({
       let members = this.filteredMembers;
       this.members = [];
 
-      for (i = 0; i < members.length; i++) {
-        if (selectDD.value == members[i].state || selectDD.value == 'All') {
-          if (independentCB.checked == true && members[i].party == "I") {
-            this.members.push(members[i]);
+      members.forEach(mem => {
+        if (selectDD.value === mem.state || selectDD.value === 'All') {
+          if (independentCB.checked && mem.party === "I") {
+            this.members.push(mem);
           }
-          if (democratCB.checked == true && members[i].party == "D") {
-            this.members.push(members[i]);
+          if (democratCB.checked && mem.party === "D") {
+            this.members.push(mem);
           }
-          if (republicanCB.checked == true && members[i].party == "R") {
-            this.members.push(members[i]);
-
+          if (republicanCB.checked && mem.party === "R") {
+            this.members.push(mem);
           }
         }
-      }
+      })
     },
     filterStates() {
       let members = this.filteredMembers;
