@@ -14,114 +14,128 @@
 </head>
 
 <body>
-  <!-- <div id="loader"></div> -->
-  <div id="spinner-container">
-    <div class="spinner-grow" role="status" id="spinner"></div>
-    <span>fetching data...</span>
-  </div>
 
-  <div style="display:none;" id="data-tables" class="animate-bottom">
-    <div class="container col-xl-9 col-lg-12 col-md-12 col-sm-12 p-0">
+  <div id="main">
 
-      <div class="jumbotron-fluid jumbotron">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm welcome">
-              <h1 class="display-4">United States Senate</h1>
-              <p class="lead">Transparent Government in Facts</p>
-            </div>
-            <div class="col-sm text-right">
-              <img class="jumbotron-img" src="./img/senate-seal.png" alt="senate-logo">
+    <div id="spinner-container" v-if="display">
+      <div id="spinner-container">
+        <div class="spinner-grow" role="status" id="spinner"></div>
+        <span>fetching data...</span>
+      </div>
+    </div>
+
+    <div id="data-tables" class="animate-bottom" v-else>
+      <div class="container col-xl-9 col-lg-12 col-md-12 col-sm-12 p-0">
+
+        <div class="jumbotron-fluid jumbotron">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm welcome">
+                <h1 class="display-4">United States Senate</h1>
+                <p class="lead">Transparent Government in Facts</p>
+              </div>
+              <div class="col-sm text-right">
+                <img class="jumbotron-img" src="./img/senate-seal.png" alt="senate-logo">
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Statistics</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="./home.html">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Congress <span class="congressNo"></span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="./house-data.html">House</a>
-                <a class="dropdown-item" href="#">Senate</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Attendance
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="./house-attendance.html">House</a>
-                <a class="dropdown-item" href="./senate-attendance.html">Senate</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Party Loyalty
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="./house-loyalty.html">House</a>
-                <a class="dropdown-item" href="./senate-loyalty.html">Senate</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Statistics</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="./home.html">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Congress <span class="congressNo"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="./house-data.html">House</a>
+                  <a class="dropdown-item" href="#">Senate</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Attendance
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="./house-attendance.html">House</a>
+                  <a class="dropdown-item" href="./senate-attendance.html">Senate</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Party Loyalty
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="./house-loyalty.html">House</a>
+                  <a class="dropdown-item" href="./senate-loyalty.html">Senate</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-      <div class="card about" style="border: none; border-radius: 0;">
-        <div class="row no-gutters">
-          <div class="container">
-            <div class="card-body">
-              <h5 class="card-title pb-3">Senate</h5>
-              <p class="card-text">The United States Senate is the upper chamber of the United States Congress which,
-                along with the United States House of Representatives—the lower chamber—comprises the legislature of the
-                United States. The Senate chamber is located in the north wing of the Capitol Building, in Washington,
-                D.C.
-                <br><br>
-                The composition and powers of the Senate are established by Article One of the United States
-                Constitution. The Senate is composed of senators, each of whom represents a single state in its
-                entirety. Each state, regardless of its population size, is equally represented by two senators who
-                serve
-                staggered terms of six years. There being at present 50 states in the Union, there are currently 100
-                senators. From 1789 to 1913, senators were appointed by legislatures of the states they represented;
-                they
-                are now elected by popular vote, following the ratification of the Seventeenth Amendment in 1913.</p>
-              <p class="card-text"><a class="btn btn-outline-dark" data-toggle="collapse" href="#multiCollapseExample1"
-                  role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Read more</a></p>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="collapse multi-collapse" id="multiCollapseExample1">
-                    <div class="card card-body p-4 mt-2" style="border: none;">
-                      As the upper chamber of Congress, the Senate has several powers of advice and consent which are
-                      unique to it. These include the approval of treaties, and the confirmation of Cabinet secretaries,
-                      Supreme Court justices, federal judges, flag officers, regulatory officials, ambassadors, other
-                      federal executive officials and other federal uniformed officers. In addition to these, in cases
-                      wherein no candidate receives a majority of electors for vice president, the duty falls to the
-                      Senate to elect one of the top two recipients of electors for that office. Furthermore, the Senate
-                      has the responsibility of conducting the trials of those impeached by the House.
-                      <br><br>
-                      The Senate is widely considered both a more deliberative and more prestigious body than
-                      the House of Representatives due to its longer terms, smaller size, and statewide constituencies,
-                      which historically led to a more collegial and less partisan atmosphere. The presiding officer of
-                      the Senate is the vice president of the United States, who is president of the Senate. In the vice
-                      president's absence, the president pro tempore, who is customarily the senior member of the party
-                      holding a majority of seats, presides over the Senate. In the early 20th century, the practice of
-                      majority and minority parties electing their floor leaders began, although they are not
-                      constitutional officers.
+        <div class="card about" style="border: none; border-radius: 0;">
+          <div class="row no-gutters">
+            <div class="container">
+              <div class="card-body">
+                <h5 class="card-title pb-3">Senate</h5>
+                <p class="card-text">The United States Senate is the upper chamber of the United States Congress which,
+                  along with the United States House of Representatives—the lower chamber—comprises the legislature of
+                  the
+                  United States. The Senate chamber is located in the north wing of the Capitol Building, in Washington,
+                  D.C.
+                  <br><br>
+                  The composition and powers of the Senate are established by Article One of the United States
+                  Constitution. The Senate is composed of senators, each of whom represents a single state in its
+                  entirety. Each state, regardless of its population size, is equally represented by two senators who
+                  serve
+                  staggered terms of six years. There being at present 50 states in the Union, there are currently 100
+                  senators. From 1789 to 1913, senators were appointed by legislatures of the states they represented;
+                  they
+                  are now elected by popular vote, following the ratification of the Seventeenth Amendment in 1913.</p>
+                <p class="card-text"><a class="btn btn-outline-dark" data-toggle="collapse"
+                    href="#multiCollapseExample1" role="button" aria-expanded="false"
+                    aria-controls="multiCollapseExample1">Read more</a></p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                      <div class="card card-body p-4 mt-2" style="border: none;">
+                        As the upper chamber of Congress, the Senate has several powers of advice and consent which are
+                        unique to it. These include the approval of treaties, and the confirmation of Cabinet
+                        secretaries,
+                        Supreme Court justices, federal judges, flag officers, regulatory officials, ambassadors, other
+                        federal executive officials and other federal uniformed officers. In addition to these, in cases
+                        wherein no candidate receives a majority of electors for vice president, the duty falls to the
+                        Senate to elect one of the top two recipients of electors for that office. Furthermore, the
+                        Senate
+                        has the responsibility of conducting the trials of those impeached by the House.
+                        <br><br>
+                        The Senate is widely considered both a more deliberative and more prestigious body than
+                        the House of Representatives due to its longer terms, smaller size, and statewide
+                        constituencies,
+                        which historically led to a more collegial and less partisan atmosphere. The presiding officer
+                        of
+                        the Senate is the vice president of the United States, who is president of the Senate. In the
+                        vice
+                        president's absence, the president pro tempore, who is customarily the senior member of the
+                        party
+                        holding a majority of seats, presides over the Senate. In the early 20th century, the practice
+                        of
+                        majority and minority parties electing their floor leaders began, although they are not
+                        constitutional officers.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -129,26 +143,34 @@
             </div>
           </div>
         </div>
-      </div>
 
+      </div>
 
       <div class="members-tbl col-md-12">
         <div class="table-responsive">
           <h2>Party Affiliation</h2>
+
           <div class="table-filters">
             <span style="font-weight: bold;">Party:</span>
-            <input type="checkbox" name="Republicans" value="R" class="checkbox" checked> Republicans
-            <input type="checkbox" name="Democrats" value="D" class="checkbox" checked> Democrats
-            <input type="checkbox" name="Independent" value="I" class="checkbox" checked> Independent
+            <input v-on:click="filter" type="checkbox" name="Republicans" id="republicans" value="R" class="checkbox"
+              checked>
+            Republicans
+            <input v-on:click="filter" type="checkbox" name="Democrats" id="democrats" value="D" class="checkbox"
+              checked> Democrats
+            <input v-on:click="filter" type="checkbox" name="Independent" value="I" id="independent" class="checkbox"
+              checked> Independent
+
             <span style="font-weight: bold;"> | State:</span>
-            <select id="table-state-select">
+            <select v-on:change="filter" id="state-select">
               <option value="All">All</option>
+              <option v-for="state in states" :value='state'>{{state}}</option>
             </select>
           </div>
+
           <br>
           <div class="table-length"></div>
           <table id="house-table" class="table table-striped">
-            <caption>List of Senators</caption>
+            <caption>List of Representatives | <a href="#">Go to top</a></caption>
             <thead class="thead-dark">
               <tr>
                 <th>Full Name</th>
@@ -158,12 +180,24 @@
                 <th>Percentage of votes</th>
               </tr>
             </thead>
-            <tbody class="members-table_tbody"></tbody>
+            <tbody class="members-table_tbody">
+              <tr v-for="member in members">
+                <td><a v-bind:href=member.url target="_blank">
+                    {{member.first_name}}
+                    <span v-if="member.middle_name">
+                      {{member.middle_name}}
+                    </span>
+                    {{member.last_name}}</a></td>
+                <td>{{member.party}}</td>
+                <td>{{member.state}}</td>
+                <td>{{member.seniority}}</td>
+                <td>{{member.votes_with_party_pct}} %</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
     </div>
-
   </div>
 
 
@@ -176,7 +210,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="./JS/app.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./Vue/main_vue.js"></script>
 </body>
 
 </html>
